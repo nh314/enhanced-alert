@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Enhanced Alert - a jQuery UI Plugin</title>
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" />
+
+    <script type="text/javascript" src="../src/ui.enhanced-alert.js"></script>
+    <link type="text/css" rel="stylesheet" href="../src/css/ui-enhanced-alert.css" />
+</head>
+
+<body>
+
+    <h1>Enhanced Alert <sub><small>A jQuery UI Plugin</small></sub></h1>
+    <p>Replace browser dialog (alert, prompt, confirm) with new ones</p>
+    <h2>USAGE:</h2>
+    <fieldset>
+        <legend>Alert</legend>
+        <pre>$.ea.alert(message[,title[,icon]])</pre>
+        <h4>Example:</h4>
+        <pre>$.ea.alert("I'm new",'Warning');</pre>
+        <button id="btn1">Browser</button>
+        <button id="btn2">Enhanced Alert</button>
+    </fieldset>
+    <fieldset>
+        <legend>Confirm</legend>
+
+        <pre> $.ea.confirm(message[, title[, callback[, icon]]]) </pre>
+
+        <h4> Example: </h4>
+        <pre>
+$.ea.confirm('Are your over 18', 'Confirm please', function(r) {
+    $.ea.alert(r)
+})
+</pre>
+        <button id="btn3">Browser</button>
+        <button id="btn4">Enhanced Alert</button>
+    </fieldset>
+    <fieldset>
+        <legend>Prompt</legend>
+        <pre>$.ea.prompt(message[, title[, callback[, icon]]])</pre>
+        <h4>Example:</h4>
+<pre>
+$.ea.prompt('Where are your from ?', 'Answer please', function(r) {
+    if (r) {
+        alert('I love ' + r + '!')
+    }
+})
+</pre>
+        <button id="btn5">Browser</button>
+        <button id="btn6">Enhanced Alert</button>
+    </fieldset>
+    <h2>Custom Icon:</h2>
+    <p>There are two default icon values: <code>alert</code> and <code>info</code>.</p>
+    <p>But you can have more icon by add this code to css file:</p>
+<pre>
+.ea.icon_name {
+    background: url(path/Image.png);
+}
+</pre>
+    <script type="text/javascript">
+        
+        $(document).ready(function() {
+            $('#btn1').click(function() {
+                alert("I'm old")
+            })
+            $('#btn2').click(function() {
+                $.ea.alert("I'm new", 'Warning')
+            })
+
+            /*-------------------------------------*/
+
+            $('#btn3').click(function() {
+                var r = confirm('Are you over 18 ?')
+                alert(r)
+            })
+            $('#btn4').click(function() {
+                $.ea.confirm('Are your over 18', 'Confirm please', function(r) {
+                    $.ea.alert(r)
+                })
+            })
+
+            /*-------------------------------------*/
+
+            $('#btn5').click(function() {
+                var r = prompt('Where are your from ?')
+                if (r) {
+                    alert('I love ' + r + '!')
+                }
+            })
+            $('#btn6').click(function() {
+                $.ea.prompt('Where are your from ?', 'Answer please', function(r) {
+                    if (r) {
+                        alert('I love ' + r + '!')
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>
